@@ -1,0 +1,24 @@
+{
+  "name": "postman1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start:dev": "nodemon app.js",
+    "start:test": "cross-env NODE_ENV=test PORT=3030 nodemon app.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "morgan": "^1.10.0",
+    "sequelize": "^6.6.5",
+    "sqlite3": "^5.0.2"
+  },
+  "devDependencies": {
+    "express-swagger-generator": "^1.1.17",
+    "sequelize-cli": "^6.2.0"
+  }
+}
