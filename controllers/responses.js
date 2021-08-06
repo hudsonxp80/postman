@@ -1,29 +1,36 @@
 /* eslint-disable indent */
 module.exports = {
-    success: (res) => (data) => {
-        res.status(200).json(data);
-    },
+  /**
+   * @typedef Error
+   * @property {string} errorCode.required
+   * @property {string} errorMessage.required
+   *
+   */
 
-    fail: (res) => (err) => {
-        res.status(400).json(err).end();
-    },
+  success: (res) => (data) => {
+    res.status(200).json(data);
+  },
 
-    forbidden: (res) => (err) => {
-        res.status(403).json(err).end();
-    },
-    serverError: (res) => (err) => {
-        res.status(500).send(err);
-    },
+  fail: (res) => (err) => {
+    res.status(400).json(err).end();
+  },
 
-    noContent: (res) => {
-        res.status(204).send();
-    },
+  forbidden: (res) => (err) => {
+    res.status(403).json(err).end();
+  },
+  serverError: (res) => (err) => {
+    res.status(500).send(err);
+  },
 
-    notFound: (res) => {
-        res.status(404).end();
-    },
+  noContent: (res) => {
+    res.status(204).send();
+  },
 
-    next: (res, next) => {
-        if (!res.headersSent) next();
-    },
+  notFound: (res) => {
+    res.status(404).end();
+  },
+
+  next: (res, next) => {
+    if (!res.headersSent) next();
+  },
 };
