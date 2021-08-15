@@ -46,7 +46,7 @@ module.exports = (sequelize) => {
 
   router.all("*", (req, res, next) => {
     // console.log(req.url, req._parsedUrl, req.headers);
-    const whitelistUrls = ["/login", "/token", "/client"];
+    const whitelistUrls = ["/login", "/token", "/token/refresh", "/client"];
     if (whitelistUrls.indexOf(req._parsedUrl.pathname) > -1) {
       next();
     } else {
@@ -194,7 +194,10 @@ module.exports = (sequelize) => {
         email: decoded.email,
         id: decoded.id,
       };
-      return res.json(generateToken(profile));
+      data = generateToken(profile);
+      data.user_id = profile.id;
+
+      res.json(data);
     });
   });
 
